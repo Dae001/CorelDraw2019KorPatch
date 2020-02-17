@@ -3,6 +3,10 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 
+// 로컬 리포지토리 빈폴더 만들어 등록부터 한다
+// 소스를 복사하고 sln을 클릭
+// 팀탐색기에서 GitHub를 연결후 커밋후 동기화한다
+
 namespace CorelDraw2019KorPatch
 {
     public partial class frmMain : Form
@@ -49,10 +53,9 @@ namespace CorelDraw2019KorPatch
             private void FinalBeep(string msg)
         {
             Console.Beep();
-            btnStart.Location = new Point(30, btnStart.Location.Y);
-            btnStart.Size = new Size(303, 46);
-            btnStart.ForeColor = Color.Red;
-            btnStart.Text = msg;
+            lblMsg.ForeColor = Color.Red;
+            lblMsg.Text = msg;
+            btnStart.Text = "종 료";
             Delay(2000);
             this.Close();
         }
