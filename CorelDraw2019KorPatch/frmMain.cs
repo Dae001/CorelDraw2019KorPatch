@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using System.Media;
 
 // 로컬 리포지토리 빈폴더 만들어 등록부터 한다
 // 소스를 복사하고 sln을 클릭
@@ -52,12 +53,21 @@ namespace CorelDraw2019KorPatch
 
             private void FinalBeep(string msg)
         {
-            Console.Beep();
+            // Console.Beep();
+            DingDongDaengDong();
+
             lblMsg.ForeColor = Color.Red;
             lblMsg.Text = msg;
             btnStart.Text = "종 료";
             Delay(2000);
             this.Close();
+        }
+
+        private static void DingDongDaengDong()
+        {
+            Stream st = Properties.Resources.DingDongDaengDong;
+            SoundPlayer snd = new SoundPlayer(st);
+            snd.Play();
         }
 
         private static DateTime Delay(int MS)
@@ -71,9 +81,13 @@ namespace CorelDraw2019KorPatch
                 System.Windows.Forms.Application.DoEvents();
                 ThisMoment = DateTime.Now;
             }
-
             return DateTime.Now;
         }
+
+
+
+
+
 
         //private void Filecopy()
         //{
